@@ -24,7 +24,7 @@ module RailsAdmin
         #TODO: Make "bulkable". See https://github.com/sferik/rails_admin/blob/master/lib/rails_admin/config/actions/base.rb
 
         register_instance_option :link_icon do
-          'icon-asterisk'
+          'fas fa-asterisk'
         end
 
         # adapted from parent action, Edit
@@ -44,7 +44,7 @@ module RailsAdmin
               target_params.slice!(:password)
               target_params.permit! if target_params.respond_to?(:permit!)
 
-              @object.set_attributes(target_params)
+              @object.assign_attributes(target_params)
               @authorization_adapter && @authorization_adapter.attributes_for(:update, @abstract_model).each do |name, value|
                 @object.send("#{name}=", value)
               end
